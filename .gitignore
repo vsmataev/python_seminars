@@ -398,5 +398,5 @@ FodyWeavers.xsd
 *.sln.iml
 
 .DS_Store
-python/.folder
-/Users/mc724rs/Desktop/GIT_all.nosync/python/.folder
+python/.folder/
+/Users/mc724rs/Desktop/GIT_all.nosync/python/.folder/
