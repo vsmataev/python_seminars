@@ -36,7 +36,7 @@ for item in list:
     if item in dct:
         print(f'{item}_{dct[item]}', end=' ')
     else:
-        print(item, end=" ")  # end= значит что вывод продолжается в этой же строке
+        print(item, end=" ")  # end= значит что вывод продолжается в этой же
         # все значения начинаются с 1 
     dct[item] = dct.get(item, 0) +1 
 print(dct) # {'a': 5, 'b': 1, 'c': 2, 'd': 3}
