@@ -27,7 +27,10 @@ def max_sum_of_three(arr):
 # решение с семинара (с учетом того что кусты растут по кругу)
 
 def max_berries_sem(array):
-    #  создается новый список из array[] в который последовательно заносится сумма трех элементов и потом применяется max
+    #  создается новый список из array[] в который последовательно заносится 
+    # сумма трех элементов и потом применяется max
+    print(array)
+    print([array[i - 2] + array[i - 1] + array[i] for i in range(len(array))])
     return max([array[i - 2] + array[i - 1] + array[i] for i in range(len(array))])
 
 
