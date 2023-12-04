@@ -22,9 +22,33 @@ def max_sum_of_three(arr):
         if current_sum > max_sum:
             max_sum = current_sum
 
-    return max_sum  # Возвращаем максимальную сумму
+    return max_sum  # Возвращаем максимальную сумму (но не учитывает что кусты расположены по кругу)
 
+# решение с семинара (с учетом того что кусты растут по кругу)
+
+def max_berries_sem(array):
+    #  создается новый список из array[] в который последовательно заносится сумма трех элементов и потом применяется max
+    return max([array[i - 2] + array[i - 1] + array[i] for i in range(len(array))])
+
+
+# решение с учетом условия
+
+def max_berries(arr):
+    max_sum = 0
+    n = len(arr)
+    for i in range(n):
+        # Собираем суммы ягод с текущего куста и его двух соседей
+        curr_sum = arr[i] + arr[(i + 1) % n] + arr[(i + 2) % n] # остаток от деления нужен если массив нелинейный
+        max_sum = max(max_sum, curr_sum)  # Обновляем максимальную сумму
+
+    return max_sum
+
+# Пример ввода данных
+bushes = [20, 8, 6, 4, 9, 2, 7, 10]  # Пример данных о ягодах на кустах
 # Пример использования функции
-array = [5, 8, 6, 4, 9, 2, 7, 3]
-result = max_sum_of_three(array)
-print(f"Сумма элементов тройки с максимальной суммой: {result}")
+result = max_sum_of_three(bushes)
+print(f"Сумма трех последовательных элементов с максимальной суммой: {result}")
+result = max_berries_sem(bushes)
+print(f"Максимальное число ягод, которое может собрать собирающий модуль (семинар): {result}")
+result = max_berries(bushes)
+print(f"Максимальное число ягод, которое может собрать собирающий модуль: {result}")
