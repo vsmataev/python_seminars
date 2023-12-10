@@ -1,8 +1,7 @@
 from print_data import print_file #чтоб знать в каком файле что лежит
 
 
-
-def choice_number_file():
+def choice_number_file(): # исправить потом на select_file_number
     print_file()
     number = int(input("Выберите файл\n"
                        "Ведите 1 или 2: "))
