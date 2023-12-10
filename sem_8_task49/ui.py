@@ -21,8 +21,9 @@ def check_number(n): # проверка правильности ввода
 
 
 def start_menu():
-    command = None # пустое значениие
-    command = int(input("Здравствуйте!\n"
+    command = None # пустое значение
+    while command != 5:
+        command = int(input("Здравствуйте!\n"
                         "выберите функцию: \n"
                         "1. Добавить\n"
                         "2. Удалить\n"
@@ -30,10 +31,10 @@ def start_menu():
                         "4. Вывод\n"
                         "5. Выход\n"
                         "Введите номер команды: "))
-    
+
    
-    command = check_number(command)
-    while command != 5:
+    # while command != 5:
+        command = check_number(command)
         if command == 1:
             add_row()
         elif command == 2:
@@ -42,5 +43,7 @@ def start_menu():
             change_row()
         elif command == 4:
             print_file()
-    
+
+        command = check_number(command)  # Обновляем значение command после выполнения каждой команды
+
     print("всем спасибо! до свидания")
