@@ -33,7 +33,6 @@ def start_menu():
                         "Введите номер команды: "))
 
    
-    # while command != 5:
         command = check_number(command)
         if command == 1:
             add_row()
