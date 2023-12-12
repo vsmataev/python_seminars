@@ -3,6 +3,8 @@ from change_data import change_row
 from add_data import add_row
 from print_data import print_file
 
+file_path = f'python/sem_8/db/data_{nf}.txt'
+
 
 def check_number(n): # проверка правильности ввода
     while n < 1 or n > 5:
@@ -36,10 +38,13 @@ def start_menu():
         command = check_number(command)
         if command == 1:
             add_row()
+            print_file()
         elif command == 2:
             delete_row()
+            print_file()
         elif command == 3:
             change_row()
+            print_file()
         elif command == 4:
             print_file()
 

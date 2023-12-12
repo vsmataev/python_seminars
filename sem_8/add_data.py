@@ -9,7 +9,7 @@ def add_row():
     birthdate =input("введите дату рождения дд.мм.гггг: ")
     town = input("укажите город: ")
 
-    with open(f'python/sem_8_task49/db/data_{nf}.txt', 'r', encoding='utf-8') as file:
+    with open(f'python/sem_8/db/data_{nf}.txt', 'r', encoding='utf-8') as file:
         data = file.readlines() # список всех строк нашего файла
         now_number_row = len(data) + 1 # узнаем количество строк, добавим 1 и узнаем какая строка следующая
 
@@ -17,3 +17,4 @@ def add_row():
         file.write(f'{now_number_row}; {name}; '
                    f'{surename}; {birthdate}; {town}\n')
     print("Данные успешно добавлены")
+
