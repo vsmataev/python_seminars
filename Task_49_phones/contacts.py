@@ -9,6 +9,7 @@
 4. Использование функций. Ваша программа не должна быть линейной
 '''
 
+"Ветка REQUEST создана для pull-request-a"
 
 import os
 from csv import DictReader, DictWriter
