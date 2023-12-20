@@ -1,4 +1,4 @@
-'''
+"""
 Создать телефонный справочник с возможностью импорта и экспорта данных в
 формате .txt. Фамилия, имя, отчество, номер телефона - данные, которые должны находиться
 в файле.
@@ -7,21 +7,21 @@
 3. Пользователь может ввести одну из характеристик для поиска определенной
 записи(Например имя или фамилию человека)
 4. Использование функций. Ваша программа не должна быть линейной
-'''
-
+"""
 
 import os
 from csv import DictReader, DictWriter
-
 
 
 class LenNumberError(Exception):
     def __init__(self, txt):
         self.txt = txt
 
+
 class NameError(Exception):
     def __init__(self, txt):
         self.txt = txt
+
 
 def get_info():
     is_valid_first_name = False
@@ -118,7 +118,6 @@ def display_file_content(file_index, files=None):
 
 
 def copy_lines(files, source_index, destination_index, line_number):
-
     destination_file = None  # Создаем переменную для записи названия файла назначения
 
     try:
@@ -178,8 +177,8 @@ def main():
             print(f"{i}. {file}")
 
         file_choice = input("Выберите файл (введите номер)\n"
-                    "или создайте новый - 'n' \n"
-                    "'q' для выхода): ")
+                            "или создайте новый - 'n' \n"
+                            "'q' для выхода): ")
 
         if file_choice.lower() == 'q':
             break
@@ -204,43 +203,45 @@ def main():
                 print(f"Выбран файл: {file_index + 1}")
             while True:
                 command = input("Выберите команду: \n"
-                        "l. Просмотреть содержимое \n"
-                        "w. Добавить контакт\n"
-                        "f. поиск контактов \n"
-                        "c. скопировать данные из одного файла в другой\n"
-                        "q. выход\n"
-                        "Введите команду: ")
+                                "l. Просмотреть содержимое \n"
+                                "w. Добавить контакт\n"
+                                "f. поиск контактов \n"
+                                "c. скопировать данные из одного файла в другой\n"
+                                "q. выход\n"
+                                "Введите команду: ")
                 if command == 'q':
-                         break
+                    break
                 elif command == 'l':
-                 display_file_content(selected_file)
+                    display_file_content(selected_file)
                 elif command == 'w':
-                 write_file(selected_file, get_info())
-                 display_file_content(selected_file)
+                    write_file(selected_file, get_info())
+                    display_file_content(selected_file)
                 elif command == 'c':
-                        source_index = int(input("Введите номер файла, из которого нужно скопировать строки: ")) - 1
-                        selected_file = files[source_index]
-                        display_file_content(selected_file)  # Вывод содержимого выбранного файла
+                    source_index = int(input("Введите номер файла, из которого нужно скопировать строки: ")) - 1
+                    selected_file = files[source_index]
+                    display_file_content(selected_file)  # Вывод содержимого выбранного файла
 
-                        destination_index = int(input("Введите номер файла, в который нужно скопировать строки: ")) - 1
-                        line_number = int(input("Введите номер строки для копирования: "))
-                        copy_lines(files, source_index + 1, destination_index + 1, line_number)
-                        selected_file = files[destination_index]
-                        display_file_content(selected_file)
+                    destination_index = int(input("Введите номер файла, в который нужно скопировать строки: ")) - 1
+                    line_number = int(input("Введите номер строки для копирования: "))
+                    copy_lines(files, source_index + 1, destination_index + 1, line_number)
+                    selected_file = files[destination_index]
+                    display_file_content(selected_file)
                 elif command == 'f':
-                        keyword = input("Введите имя или фамилию: ")
-                        file_choice = int(file_choice)
-                        found_entries = search_by_name_or_lastname(file_choice, files, keyword)
-                        if found_entries:
-                                print("Найденные записи:")
-                                for entry in found_entries:
-                                    print(f"Номер строки в исходном файле: {entry['Номер строки']}, {entry['Имя']}, {entry['Фамилия']}, Телефон: {entry['Телефон']}")
-                        else:
-                            print("Ничего не найдено.")
-        
-      
+                    keyword = input("Введите имя или фамилию: ")
+                    file_choice = int(file_choice)
+                    found_entries = search_by_name_or_lastname(file_choice, files, keyword)
+                    if found_entries:
+                        print("Найденные записи:")
+                        for entry in found_entries:
+                            print(
+                                f"Номер строки в исходном файле: {entry['Номер строки']}, {entry['Имя']}, {entry['Фамилия']}, Телефон: {entry['Телефон']}")
+                    else:
+                        print("Ничего не найдено.")
+
+
         except ValueError:
-             print("Введите корректный номер файла")
+            print("Введите корректный номер файла")
+
 
 if __name__ == "__main__":
     main()

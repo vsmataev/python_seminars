@@ -8,16 +8,20 @@ import random
 lst = ['robot'] * 10
 lst += ['human'] * 10
 random.shuffle(lst)
-data = pd.DataFrame({'whoAmI':lst})
+data = pd.DataFrame({'whoAmI': lst})
 data.head()
+print(data)
 
 unique_values = data['whoAmI'].unique()
 
-# Создание пустого DataFrame
+
+
+# Создание нового DataFrame, везде 0
 one_hot_data = pd.DataFrame(0, columns=unique_values, index=range(len(data)))
+one_hot_data2 = pd.get_dummies(data['whoAmI'])  # почему-то в зеркальном отображении
 
 # Проход по строкам и установка 1 для соответствующего столбца
 for ind, val in enumerate(data['whoAmI']):
-    one_hot_data.loc[ind, val] = 1
+    one_hot_data.iloc[ind, one_hot_data.columns.get_loc(val)] = 1
 
-print(one_hot_data.head())
+print(one_hot_data, one_hot_data2)
